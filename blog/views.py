@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import News
 
 
 
@@ -10,14 +10,14 @@ page_defaults = {
 
 
 def homepage(request):
-    content = {
-        'title': 'Home',
-        'body': '<h1>This is the homepage.</h1>'
-    }
+    # content = {
+    #     'title': 'Home',
+    #     'body': '<h1>This is the homepage.</h1>'
+    # }
 
-    context = {**page_defaults, **content}
+    # context = {**page_defaults, **content}
 
-    return render(request, "pages/page.html", context)
+    return render(request, "pages/index.html")
 
 def about(request):
     # content = {
@@ -41,5 +41,5 @@ def contact(request):
     return render(request, "pages/page.html", context)
 
 def blog_detail(request, slug):
-    post = get_object_or_404(Post, slug=slug)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    news = get_object_or_404(News, slug=slug)
+    return render(request, 'blog/news_detail.html', {'news': news})
