@@ -1,9 +1,12 @@
 from django.urls import path
 from . import views
+from .views import HomeView
 
 urlpatterns = [
-    path("", views.homepage, name="homepage"),
+    path("", HomeView.as_view(), name="homepage"),
     path("about/", views.about, name="about"),
     path("contact/", views.contact, name="contact"),
-    path("blog/<slug:slug>/", views.blog_detail, name="blog_detail"),
+    path("news/<slug:slug>/", views.news_detail, name="news_detail"),
+    path("category/<str:cats>/", views.CategoryListView, name="category"),
+
 ]

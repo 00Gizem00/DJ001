@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  {% load static %}
+{% load static %}
   <!-- Required meta tags -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,26 +69,14 @@
                         <li class="relative hover:bg-gray-50"><a class="block py-2 px-6 border-b border-gray-100" href="contact-us.html">Contact</a></li>
                       </ul>
                     </li>
-
                   </ul>
                 </li>
+                {% for item in cat_menu %}
                 <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="MusicCategory.html">Müzik</a>
+                  <a class="block py-3 px-6 border-b-2 border-transparent" href="{% url 'category' item|slugify %}">{{ item }}</a>
                 </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="TechCategory.html">Teknoloji</a>
-                </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="GameCategory.html">Oyun</a>
-                </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="AnimeCategory.html">Anime</a>
-                </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="MagazineCategory.html">Magazin</a>
-                </li>
+                {% endfor %}
               </ul>
-
               <!-- search form & mobile nav -->
               <div class="flex flex-row items-center text-gray-300">
                 <div class="search-dropdown relative border-r lg:border-l border-gray-800 hover:bg-gray-900">
