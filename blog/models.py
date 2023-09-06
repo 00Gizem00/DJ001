@@ -1,11 +1,11 @@
 from django.db import models
 from autoslug import AutoSlugField
 from django.contrib.auth.models import User
-from django.urls import reverse
 
 
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
+    slug = AutoSlugField(populate_from='name', unique=True, editable=True, blank=True)
 
     class Meta:
         db_table = 'categories'
@@ -26,7 +26,7 @@ class News(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     published = models.BooleanField(default=False)
-    category = models.CharField(max_length=200, default='general')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='news', null=True, blank=True)
 
     
@@ -37,9 +37,6 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
-
-    def get_absolute_url(self):
-        return "/news/%s/" % self.slug
 
 class Author(models.Model):
     name = models.CharField(max_length=200)
@@ -57,9 +54,6 @@ class Author(models.Model):
 
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        return "/news/%s/" % self.name
 
 
 class Comment(models.Model):
@@ -79,6 +73,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        return "/news/%s/" % self.name

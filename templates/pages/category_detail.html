@@ -25,115 +25,54 @@
           <div class="flex-shrink max-w-full w-full lg:w-2/3  overflow-hidden">
             <div class="w-full py-3">
               <h2 class="text-gray-800 text-2xl font-bold">
-                <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>Anime
+                <span class="inline-block h-5 border-l-3 border-red-600 mr-2"></span>{{ category.name }}
               </h2>
             </div>
             <div class="flex flex-row flex-wrap -mx-3">
               <div class="flex-shrink max-w-full w-full px-3 pb-5">
                 <div class="relative hover-img max-h-98 overflow-hidden">
                   <!--thumbnail-->
-                  <a href="AnimeNews1.html">
-                    <img class="max-w-full w-full mx-auto h-auto" src="https://www.animefantastica.com/wp-content/uploads/Spy-x-Family-1.jpg" alt="Image description">
-                  </a>
-                  <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
-                    <!--title-->
-                    <a href="AnimeNews1.html">
-                      <h2 class="text-3xl font-bold capitalize text-white mb-3">Spy x Family Family 2. Sezon Ne zaman Gelecek?</h2>
-                    </a>                                              
-                    <!-- author and date -->
-                    <div class="pt-2">
-                      <div class="text-gray-100"><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>Anime</div>
+                  {% for news_item in news_in_category %}
+                    {% if news_item.category.name == category.name %}
+                      {% if forloop.first %}
+                        <a href="{% url 'news_detail' news_item.slug %}">
+                          <img class="max-w-full w-full mx-auto h-auto" src="{{ news_item.photo_one }}" alt="{{ news_item.title }}">
+                        </a>
+                        <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
+                          <!--title-->
+                          <a href="{% url 'news_detail' news_item.slug %}">
+                            <h2 class="text-3xl font-bold capitalize text-white mb-3">{{ news_item.title }}</h2>
+                          </a>                                              
+                          <!-- author and date -->
+                          <div class="pt-2">
+                            <div class="text-gray-100"><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>{{ category.name }}</div>
+                          </div>
+                        </div>
+                </div>
+              </div>
+            
+              {% else %}
+              {% if forloop.counter < 20 %}
+                <div class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                  <div class="flex flex-row sm:block hover-img">
+                    <a href="{% url 'news_detail' news_item.slug %}">
+                      <img class="max-w-full w-full mx-auto" src="{{ news_item.photo_one }}" alt="alt title">
+                    </a>
+                    <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                      <h3 class="text-lg font-bold leading-tight mb-2">
+                        <a href="{% url 'news_detail' news_item.slug %}">{{ news_item.title }}</a>
+                      </h3>
+                      <p class="hidden md:block text-gray-600 leading-tight mb-1"></p>
+                      <a class="text-gray-500" href="#"><span class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>{{ category.name }}</a>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                <div class="flex flex-row sm:block hover-img">
-                  <a href="AnimeNews2.html">
-                    <img class="max-w-full w-full mx-auto" src="https://i.ytimg.com/vi_webp/VW_LxM4tt-o/maxresdefault.webp" alt="alt title">
-                  </a>
-                  <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                    <h3 class="text-lg font-bold leading-tight mb-2">
-                      <a href="AnimeNews2.html">The Rising of the Shield Hero Animesinin 3. Sezonunun Teaser'ı İlk Gösteriminin Ekim Ayında Yapılacağını Duyurdu</a>
-                    </h3>
-                    <p class="hidden md:block text-gray-600 leading-tight mb-1">Serinin resmi İngilizce Twitter hesabı videonun ingilizce altyazılı versiyonunu yayınladı ayrıca Crunchyroll'un seriyi Ekim ayında yayınlayacağı doğrulandı.</p>
-                    <a class="text-gray-500" href="#"><span class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Anime</a>
-                  </div>
-                </div>
-              </div>
-              <div class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                <div class="flex flex-row sm:block hover-img">
-                  <a href="AnimeNews3.html">
-                    <img class="max-w-full w-full mx-auto" src="https://i.ytimg.com/vi_webp/XoXvsSuPqFw/maxresdefault.webp" alt="alt title">
-                  </a>
-                  <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                    <h3 class="text-lg font-bold leading-tight mb-2">
-                      <a href="AnimeNews3.html">Bleach Thousand Year Blood War Part 2 Ne Zaman Devam Edecek?</a>
-                    </h3>
-                    <p class="hidden md:block text-gray-600 leading-tight mb-1">Bleach Thousand Year Blood War Part 2 tarihi daha Bleach Sennen Kessen-hen anime serisinin partlara bölünerek karşımıza çıkacağı açıklamasından beri merak ediliyordu.</p>
-                    <a class="text-gray-500" href="#"><span class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Anime</a>
-                  </div>
-                </div>
-              </div>
-              <div class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                <div class="flex flex-row sm:block hover-img">
-                  <a href="AnimeNews4.html">
-                    <img class="max-w-full w-full mx-auto" src="https://i.ytimg.com/vi_webp/DQp71pChp4s/maxresdefault.webp" alt="alt title">
-                  </a>
-                  <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                    <h3 class="text-lg font-bold leading-tight mb-2">
-                      <a href="AnimeNews4.html"> My Hero Academia Animesi Romi Park İle 7. Sezonuna Kavuşuyor</a>
-                    </h3>
-                    <p class="hidden md:block text-gray-600 leading-tight mb-1">My Hero Academia animesinin 6. sezonu, 7. sezonun yapımına yeşil ışık verildiğini duyuran bir fragmanla cumartesi günü sona erdi.</p>
-                    <a class="text-gray-500" href="#"><span class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Anime</a>
-                  </div>
-                </div>
-              </div>
-              <div class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                <div class="flex flex-row sm:block hover-img">
-                  <a href="AnimeNews5.html">
-                    <img class="max-w-full w-full mx-auto" src="https://i.ytimg.com/vi_webp/HXgQMWqBhZs/maxresdefault.webp" alt="alt title">
-                  </a>
-                  <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                    <h3 class="text-lg font-bold leading-tight mb-2">
-                      <a href="AnimeNews5.html">Dr. Stone 3. Sezon Dr. Stone: New World Detayları</a>
-                    </h3>
-                    <p class="hidden md:block text-gray-600 leading-tight mb-1">Jump Festa 2023 etkinliğinde Dr. Stone 3. Sezon olan Dr. Stone: New World için yeni bir tanıtım videosu paylaşıldı.</p>
-                    <a class="text-gray-500" href="#"><span class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Anime</a>
-                  </div>
-                </div>
-              </div>
-              <div class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                <div class="flex flex-row sm:block hover-img">
-                  <a href="AnimeNews6.html">
-                    <img class="max-w-full w-full mx-auto" src="https://i.ytimg.com/vi_webp/THK-VDKxvgI/maxresdefault.webp" alt="alt title">
-                  </a>
-                  <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                    <h3 class="text-lg font-bold leading-tight mb-2">
-                      <a href="AnimeNews6.html">Kengan Ashura Animesinin İkinci Sezonu Geliyor!</a>
-                    </h3>
-                    <p class="hidden md:block text-gray-600 leading-tight mb-1">Netflix, Yabako Sandrovich'in Kengan Ashura mangasının anime uyarlamasının ikinci sezonunun Eylül ayında Netflix'te yayınlanacağını duyurdu</p>
-                    <a class="text-gray-500" href="#"><span class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Anime</a>
-                  </div>
-                </div>
-              </div>
-              <div class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                <div class="flex flex-row sm:block hover-img">
-                  <a href="AnimeNews7.html">
-                    <img class="max-w-full w-full mx-auto" src="https://www.animeler.net/upload/media/entries/2023-04/10/6645-entry-0-1681080498.jpg" alt="alt title">
-                  </a>
-                  <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                    <h3 class="text-lg font-bold leading-tight mb-2">
-                      <a href="AnimeNews7.html">Record of Ragnarok II Animesi 3. Tanıtım Videosunu Yayınladı</a>
-                    </h3>
-                    <p class="hidden md:block text-gray-600 leading-tight mb-1">Record of Ragnarok II, diğer adıyla Shumatsu no Walküre, 2. sezon için 3. Tanıtım videosunu yayınladı.</p>
-                    <a class="text-gray-500" href="#"><span class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>Anime</a>
-                  </div>
-                </div>
+              {% endif %}
+              {% endif %}
+              {% endif %}
+              {% endfor %}
               </div>
             </div>
-          </div>
           <!-- right -->
           <div class="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pt-14 lg:pb-8 order-first lg:order-last">
             <div class="w-full bg-white">
@@ -171,6 +110,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </main><!-- end main -->
