@@ -16,6 +16,23 @@
       </div>
     </div>
     
+
+    <h1>Latest News by Category</h1>
+    <ul>
+        {% for news_item in latest_news_by_category %}
+            <li>
+                <a href="{% url 'news_detail' news_item.slug %}">{{ news_item.title }}</a>
+                <br>
+                {% if news_item.photo_one %}
+                    <img src="{{ news_item.photo_one }}" alt="{{ news_item.title }}" width="200">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+
+
+
     <!-- hero big grid -->
     <div class="bg-white py-6">
       <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
