@@ -1,12 +1,10 @@
+Overview
+This project is a Django-based web application designed to serve as a news site. It showcases the use of Django's powerful features for web development, including dynamic content management, template rendering, and URL routing.
 
-## Overview
-Django-News is a Python-based project demonstrating basic functionalities of a web application using the Django framework. This project serves as an introductory showcase of Django's capabilities in creating and managing web applications.
-
-## Features
-- **User Authentication**: Implements Django's built-in user authentication system to manage user accounts, login, and logout functionalities.
-- **Database Models**: Utilizes Django models to create and manipulate database entries, showcasing the ORM (Object-Relational Mapping) capabilities of Django.
-- **Admin Interface**: Leverages Django's admin interface to provide a backend panel for managing application data.
-- **Form Handling**: Demonstrates the use of Django forms for data input and validation.
+Features
+-Dynamic News Content: The site dynamically displays news articles, allowing users to browse through the latest news.
+-Article Management: An admin interface for managing news articles, including adding, editing, and deleting articles.
+-Responsive Design: The site is designed to be responsive, ensuring a seamless experience across various devices and screen sizes.
 
 ## Requirements
 - Python 3.x
