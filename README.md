@@ -17,7 +17,7 @@ Features
    ```
 2. Navigate to the project directory:
    ```bash
-   cd DJ001
+   cd Django-News
    ```
 3. Install dependencies:
    ```bash
